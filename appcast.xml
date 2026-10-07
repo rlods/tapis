@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Tapis</title>
+    <link>https://rlods.github.io/tapis/appcast.xml</link>
+    <language>en</language>
+        <item>
+            <title>0.2.0</title>
+            <pubDate>Wed, 07 Oct 2026 13:57:39 +0200</pubDate>
+            <sparkle:version>46</sparkle:version>
+            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/rlods/tapis/releases/download/v0.2.0/Tapis-0.2.0.dmg" type="application/octet-stream" sparkle:edSignature="5Kcv3DVIrEJ8HfN8cCKxR09qrZY63nMlPXdFMDduQXMaMC2xkOlM12kTdA/HLlcCmDVae3hJ1x0g90kf5+OwBA==" length="7566765"/>
+        </item>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>Wed, 07 Oct 2026 09:54:56 +0200</pubDate>
+            <sparkle:version>42</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/rlods/tapis/releases/download/v0.1.0/Tapis-0.1.0.dmg" type="application/octet-stream" sparkle:edSignature="ZTx61d+jmE3Slu3jruBSlt0Iytmx+NT9RZZuQlK6y2fhTFyJHfU8Ew/Upot+zMukFlT1V7rK8rbW3ERIhmlaCw==" length="7563545"/>
+        </item>
+  </channel>
+</rss>
