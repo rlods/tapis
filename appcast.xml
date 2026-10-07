@@ -5,6 +5,15 @@
     <link>https://rlods.github.io/tapis/appcast.xml</link>
     <language>en</language>
         <item>
+            <title>0.2.5</title>
+            <pubDate>Wed, 07 Oct 2026 22:56:43 +0200</pubDate>
+            <sparkle:version>63</sparkle:version>
+            <sparkle:shortVersionString>0.2.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/rlods/tapis/releases/download/v0.2.5/Tapis-0.2.5.dmg" type="application/octet-stream" sparkle:edSignature="3iHH/F+812VMWmBMC0Rb+tQYW3PQibCG8rtRsviD4Bei1GGn/8Wq7pm4wn1kpduElK3rpJsel/4FFFI27laTBQ==" length="1219121"/>
+        </item>
+        <item>
             <title>0.2.4</title>
             <pubDate>Wed, 07 Oct 2026 22:29:31 +0200</pubDate>
             <sparkle:version>59</sparkle:version>
