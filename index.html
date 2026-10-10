@@ -137,6 +137,24 @@
     .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
     .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
+  /* The film */
+  .player { position: relative; }
+  .film video {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+    border-radius: 16px; background: #141a2e; box-shadow: var(--shadow);
+  }
+  .player .play {
+    position: absolute; inset: 0; width: 100%; border: 0; border-radius: 16px; padding: 0;
+    background: rgba(20, 16, 12, .12); cursor: pointer; display: grid; place-items: center;
+  }
+  .player .play span {
+    width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow); transition: transform .15s;
+  }
+  .player .play:hover span, .player .play:focus-visible span { transform: scale(1.08); }
+  .player .play svg { width: 34px; height: 34px; margin-left: 6px; }
+  .player .play:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
   @media (max-width: 520px) {
     .features, .gallery, .steps { grid-template-columns: minmax(0, 1fr); }
     .floor { padding: 7%; }
@@ -166,6 +184,32 @@
 </header>
 
 <main>
+  <section class="film">
+    <div class="wrap">
+      <h2>Now you see it. Now you don’t.</h2>
+      <p class="muted">Thirty seconds of the real cloth at work: hide the mess, reveal a masterpiece, roll it up and carry it away.</p>
+      <div class="player">
+        <video controls playsinline preload="none" poster="assets/film-poster.jpg" width="1920" height="1080">
+          <source src="assets/film.webm" type='video/webm; codecs="av01.0.08M.10"'>
+          <source src="assets/film.mp4" type="video/mp4">
+        </video>
+        <button class="play" type="button" aria-label="Play the film">
+          <span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5 3l12 7-12 7z"/></svg></span>
+        </button>
+      </div>
+      <script>
+        (() => {
+          const player = document.currentScript.previousElementSibling;
+          const video = player.querySelector('video'), play = player.querySelector('.play');
+          video.controls = false;   // the big button until it starts; the usual controls after
+          const start = () => { play.remove(); video.controls = true; };
+          play.addEventListener('click', () => { start(); video.play(); });
+          video.addEventListener('play', start, { once: true });
+        })();
+      </script>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <h2>It behaves like fabric</h2>
