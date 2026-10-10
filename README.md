@@ -10,4 +10,4 @@ The source code is not in this repository.
 
 ## Inspiration
 
-The idea comes entirely from [a tweet by Terkel](https://x.com/terkelg/status/2107541877176094880) ([@terkelg](https://x.com/terkelg)): a fun idea, and just as much fun to build. Thank you!
+The idea comes from [a tweet by Terkel](https://x.com/terkelg/status/2107541877176094880): a fun idea, and just as much fun to build. Thank you!
