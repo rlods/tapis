@@ -20,6 +20,10 @@ Requires macOS 14 or later on Apple silicon.
 
 Tapis checks `https://rlods.github.io/tapis/appcast.xml` to detect and suggest updates.
 
+## Support
+
+Tapis is free. If it made your desktop a little cozier, you can [buy me a coffee on Ko-fi](https://ko-fi.com/rlods) or [sponsor it on GitHub](https://github.com/sponsors/rlods).
+
 ## Privacy by design
 
 No account. No analytics. The only network call is the update check, and it sends nothing about you. Updating is always your choice. Tapis runs entirely on your Mac, and your rugs and curtains never leave it.
@@ -27,7 +31,3 @@ No account. No analytics. The only network call is the update check, and it send
 ## Inspiration
 
 The idea comes from [a tweet by Terkel](https://x.com/terkelg/status/2107541877176094880): a fun idea, and just as much fun to build.
-
-## Support
-
-Tapis is free. If it made your desktop a little cozier, you can [buy me a coffee on Ko-fi](https://ko-fi.com/rlods) or [sponsor it on GitHub](https://github.com/sponsors/rlods).
