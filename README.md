@@ -6,10 +6,21 @@ Downloads and the update feed for **Tapis**, a cloth rug that lies on your Mac d
 
 *Tapis are physically simulated rugs that sits above or below your desktop icons and apps: sweep the clutter under it, fold it, roll it up, move it around, or weave it a pattern of your own.*
 
-- **Download:** the latest DMG is on the [Releases](https://github.com/rlods/tapis/releases/latest) page.
-- **Updates:** Tapis checks `https://rlods.github.io/tapis/appcast.xml` to detect and suggest updates.
-
 The source code is not in this repository.
+
+## Install
+
+Requires macOS 14 or later on Apple silicon.
+
+1. Download the latest DMG from the [Releases](https://github.com/rlods/tapis/releases/latest) page.
+2. Open it and drag **Tapis** to your **Applications** folder.
+3. Launch Tapis. Its icon appears in the menu bar.
+
+Tapis checks `https://rlods.github.io/tapis/appcast.xml` to detect and suggest updates.
+
+## Privacy by design
+
+No account. No analytics. The only network call is the update check, and it sends nothing about you. Tapis runs entirely on your Mac, and your rugs and curtains never leave it.
 
 ## Inspiration
 
