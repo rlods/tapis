@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tapis — a rug for your Mac desktop</title>
-<meta name="description" content="Tapis puts a real, cloth-simulated rug on your macOS desktop. Fold it, curl it, sweep things under it. Free, private, nothing leaves your Mac.">
+<title>Tapis — rugs and curtains for your Mac desktop</title>
+<meta name="description" content="Tapis puts real, cloth-simulated rugs on your macOS desktop, and curtains on its menu bar. Fold them, curl them, sweep things under them, draw them open. Free, private, nothing leaves your Mac.">
 <link rel="icon" type="image/png" href="assets/icon.png">
-<meta property="og:title" content="Tapis — a rug for your Mac desktop">
-<meta property="og:description" content="A cloth-simulated rug that lies on your desktop, above the icons and below every window.">
+<meta property="og:title" content="Tapis — rugs and curtains for your Mac desktop">
+<meta property="og:description" content="Cloth-simulated rugs that lie on your desktop, above the icons and below every window, and curtains that hang from the menu bar.">
 <meta property="og:image" content="https://rlods.github.io/tapis/assets/icon.png">
 <style>
   :root {
@@ -167,8 +167,8 @@
   <div class="wrap hero-grid">
     <div>
       <div class="brand"><img src="assets/icon.png" alt=""><span>Tapis</span></div>
-      <h1>A real rug for your Mac desktop.</h1>
-      <p class="lede">Tapis lays a soft, cloth-simulated rug on your desktop, above your icons and below every window. Grab a corner and fold it. Curl it up. Sweep things under it.</p>
+      <h1>Real rugs and curtains for your Mac desktop.</h1>
+      <p class="lede">Tapis lays a soft, cloth-simulated rug on your desktop, above your icons and below every window. Grab a corner and fold it. Curl it up. Sweep things under it. Or hang curtains from the menu bar, and draw them across your desktop.</p>
       <div class="cta">
         <a class="button" id="download" href="https://github.com/rlods/tapis/releases/latest">
           <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 2h2v9.2l3.3-3.3 1.4 1.4L10 15 4.3 9.3l1.4-1.4L9 11.2V2zM3 16h14v2H3z"/></svg>
@@ -219,6 +219,7 @@
         <div class="feature"><div class="glyph">⛰</div><h3>Drapes over your icons</h3><p>Each desktop icon makes a bump under the rug. Piles of icons make bigger bumps.</p></div>
         <div class="feature"><div class="glyph">🧶</div><h3>Design your own</h3><p>Persian, Heriz, Kilim, Berber, Stripes, Bordered or Shag, with your choice of colours, fringe, wear and pile length.</p></div>
         <div class="feature"><div class="glyph">🧺</div><h3>Stack several rugs</h3><p>Rugs rest on one another. Save sets of them as arrangements and switch between them from the menu bar.</p></div>
+        <div class="feature"><div class="glyph">🪟</div><h3>Curtains too</h3><p>Hang curtains from the menu bar. Slide them along it, draw them open or closed, swish them: they hang back in their folds. Velvet, linen, stripes, bordered or your own picture.</p></div>
         <div class="feature"><div class="glyph">🔈</div><h3>Fabric sounds</h3><p>A soft, muffled wool swish while it moves, and a gentle thump when a fold lands. One click to turn off.</p></div>
         <div class="feature"><div class="glyph">🍃</div><h3>Light on your Mac</h3><p>A rug at rest uses next to no CPU. No fans, no battery drain, even though it lives on your desktop all day.</p></div>
       </div>
@@ -234,8 +235,9 @@
         <li><h3>Long press to edit</h3><p><strong>Press and hold</strong> on a rug for half a second: it’s selected, and won’t fold while you edit it.</p><p class="how">Drag to move it, drag a corner to resize, drag the top knob to rotate (hold <kbd>⇧</kbd> to snap by 15°). Click it again, or anywhere else, when you’re done.</p></li>
         <li><h3>Make it yours</h3><p>A selected rug has a small toolbar underneath. <strong>Design</strong> opens the pattern, colours, fringe, wear and pile length.</p><p class="how">The toolbar also turns it 90°, smooths it out, or removes it.</p></li>
         <li><h3>Slide it under your icons</h3><p>By default a rug lies on top of your desktop icons, which make bumps under it. It can also lie <strong>below</strong> them, like a mat under your files.</p><p class="how">In the toolbar, choose <strong>Place below icons</strong>. To reach it again, pick <strong>Rearrange Rugs</strong> in the menu.</p></li>
-        <li><h3>Add more rugs</h3><p>Choose <strong>Add Rug</strong> in the menu (<kbd>⌘N</kbd>). Rugs pile up on one another, and the one you move slides on top.</p><p class="how"><strong>Hide Rugs</strong> clears the desktop for a moment.</p></li>
-        <li><h3>Switch arrangements</h3><p>An arrangement is a set of rugs. Keep one for work and one for the weekend, and switch with a click in the menu.</p><p class="how"><strong>New Arrangement…</strong> starts from a single rug. Duplicate, rename or delete one under <strong>Manage</strong>. Everything saves on its own.</p></li>
+        <li><h3>Add more rugs</h3><p>Choose <strong>Add Rug</strong> in the menu (<kbd>⌘N</kbd>). Rugs pile up on one another, and the one you move slides on top.</p><p class="how">Untick <strong>Show Rugs</strong> to clear the desktop for a moment.</p></li>
+        <li><h3>Hang curtains</h3><p>Choose <strong>Curtains</strong> in the menu: a curtain hangs from the menu bar. Drag it sideways to slide it along, and into another to push it.</p><p class="how"><kbd>⌘</kbd>-double-click draws it open or closed, double-click smooths it. Press and hold it to resize it by its side handles. <strong>Add Curtain</strong> hangs another.</p></li>
+        <li><h3>Switch arrangements</h3><p>An arrangement is a set of rugs, or of curtains. Keep one for work and one for the weekend, and switch with a click in the menu.</p><p class="how"><strong>Manage Arrangements…</strong> creates, duplicates, renames and deletes them. Everything saves on its own.</p></li>
       </ol>
     </div>
   </section>
@@ -274,7 +276,7 @@
       <h2>Privacy by design</h2>
       <p class="muted">No account. No analytics. The only network call is the update check, and it sends nothing about you. Updating is always your choice. Tapis runs entirely on your Mac, and your rugs and curtains never leave it.</p>
       <div class="features">
-        <div class="feature"><div class="glyph">🏠</div><h3>Saved on your Mac</h3><p>Your rugs, designs and arrangements are kept on your Mac only. Nothing is synced or uploaded.</p></div>
+        <div class="feature"><div class="glyph">🏠</div><h3>Saved on your Mac</h3><p>Your rugs, curtains, designs and arrangements are kept on your Mac only. Nothing is synced or uploaded.</p></div>
         <div class="feature"><div class="glyph">🗂</div><h3>Your desktop stays yours</h3><p>Tapis asks Finder where your icons are, only so the rug can drape over them. That never leaves your Mac.</p></div>
         <div class="feature"><div class="glyph">🔄</div><h3>Just one check, for updates</h3><p>To see if there’s a new version, Tapis reads a public list on GitHub. It sends nothing about you or your Mac.</p></div>
       </div>

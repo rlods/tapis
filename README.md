@@ -1,8 +1,8 @@
-# Tapis, virtual Desktop Rugs for macOS
+# Tapis, virtual Desktop Rugs and Curtains for macOS
 
-*Tapis is a physically simulated rug that sits above or below your desktop icons and apps: sweep the clutter under it, fold it, roll it up, move it around, or weave it a pattern of your own.*
+*Tapis is a physically simulated rug that sits above or below your desktop icons and apps: sweep the clutter under it, fold it, roll it up, move it around, or weave it a pattern of your own. Or hang curtains from the menu bar, and draw them open or closed over your desktop.*
 
-Downloads and the update feed for **Tapis**, a cloth rug that lies on your Mac desktop.
+Downloads and the update feed for **Tapis**: cloth rugs that lie on your Mac desktop, and curtains that hang from its menu bar.
 
 **Website:** [rlods.github.io/tapis](https://rlods.github.io/tapis/)
 
