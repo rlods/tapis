@@ -103,6 +103,12 @@
     width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
     background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; font-size: 20px;
   }
+  .extras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px;
+    margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .extras p { display: flex; gap: 12px; align-items: flex-start; margin: 0; color: var(--muted); font-size: 16px; }
+  .extras strong { color: var(--ink); }
+  .extras .glyph { flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--line); font-size: 16px; }
   .feature .shot {
     display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px;
     box-shadow: var(--shadow); margin-bottom: 14px;
@@ -160,7 +166,7 @@
   .player .play:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 
   @media (max-width: 520px) {
-    .features, .gallery, .steps { grid-template-columns: minmax(0, 1fr); }
+    .features, .gallery, .steps, .extras { grid-template-columns: minmax(0, 1fr); }
     .floor { padding: 7%; }
   }
 </style>
@@ -224,8 +230,10 @@
         <div class="feature"><img class="shot" src="assets/shot-designs.jpg" alt="Eight rugs in different patterns, one with a cat picture" loading="lazy"><h3>Design your own</h3><p>Persian, Heriz, Kilim, Berber, Stripes, Bordered or Shag, with your choice of colours, fringe, wear and pile length.</p></div>
         <div class="feature"><img class="shot" src="assets/shot-stack.jpg" alt="Three rugs lying on one another" loading="lazy"><h3>Stack several rugs</h3><p>Rugs rest on one another. Save sets of them as arrangements and switch between them from the menu bar.</p></div>
         <div class="feature"><img class="shot" src="assets/shot-curtains.jpg" alt="A striped and a blue curtain hanging from the menu bar, swinging" loading="lazy"><h3>Curtains too</h3><p>Hang curtains from the menu bar. Slide them along it, draw them open or closed, swish them: they hang back in their folds. Velvet, linen, stripes, bordered or your own picture.</p></div>
-        <div class="feature"><div class="glyph">🔈</div><h3>Fabric sounds</h3><p>A soft, muffled wool swish while it moves, and a gentle thump when a fold lands. One click to turn off.</p></div>
-        <div class="feature"><div class="glyph">🍃</div><h3>Light on your Mac</h3><p>A rug at rest uses next to no CPU. No fans, no battery drain, even though it lives on your desktop all day.</p></div>
+      </div>
+      <div class="extras">
+        <p><span class="glyph" aria-hidden="true">🔈</span><span><strong>Fabric sounds.</strong> A soft, muffled wool swish while it moves, and a gentle thump when a fold lands. One click to turn off.</span></p>
+        <p><span class="glyph" aria-hidden="true">🍃</span><span><strong>Light on your Mac.</strong> A rug at rest uses next to no CPU. No fans, no battery drain, even though it lives on your desktop all day.</span></p>
       </div>
     </div>
   </section>
