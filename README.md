@@ -4,7 +4,7 @@ Downloads and the update feed for **Tapis**, a cloth rug that lies on your Mac d
 
 [![Tapis: the 30-second film](assets/film-poster.jpg)](https://rlods.github.io/tapis/assets/film.mp4)
 
-*Thirty seconds of the real cloth at work: hide the mess, reveal a masterpiece, roll it up and carry it away. Click to play.*
+*Tapis is a physically simulated rug that sits above your desktop icons and below every window: sweep the clutter under it, fold it, roll it up, move it around, or weave it a pattern of your own.*
 
 - **Download:** the latest DMG is on the [Releases](https://github.com/rlods/tapis/releases/latest) page.
 - **Updates:** Tapis checks `https://rlods.github.io/tapis/appcast.xml` to detect and suggest updates.
