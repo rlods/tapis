@@ -6,7 +6,7 @@ Downloads and the update feed for **Tapis**: cloth rugs that lie on your Mac des
 
 **Website:** [rlods.github.io/tapis](https://rlods.github.io/tapis/)
 
-[![Tapis: the 30-second film](assets/film-poster-play.jpg)](https://rlods.github.io/tapis/assets/film.mp4)
+[![Tapis: the one-minute film](assets/film-poster-play.jpg)](https://rlods.github.io/tapis/assets/film.mp4)
 
 The source code is not in this repository yet.
 
