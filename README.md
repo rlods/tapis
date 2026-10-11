@@ -20,7 +20,7 @@ Tapis checks `https://rlods.github.io/tapis/appcast.xml` to detect and suggest u
 
 ## Privacy by design
 
-No account. No analytics. The only network call is the update check, and it sends nothing about you. Tapis runs entirely on your Mac, and your rugs and curtains never leave it.
+No account. No analytics. The only network call is the optional update check, and it sends nothing about you. Tapis runs entirely on your Mac, and your rugs and curtains never leave it.
 
 ## Inspiration
 
