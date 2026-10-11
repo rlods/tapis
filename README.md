@@ -19,9 +19,9 @@ The source code is not in this repository yet.
     <td width="33%"><img src="assets/shot-designs.jpg" alt="Eight rugs in different patterns"><br><b>Design your own</b><br>Persian, Heriz, Kilim, Berber, Stripes, Bordered, Shag, or your own picture.</td>
   </tr>
   <tr>
-    <td><img src="assets/shot-stack.jpg" alt="Three rugs lying on one another"><br><b>Stack several rugs</b><br>Rugs rest on one another. Save sets of them as arrangements.</td>
+    <td><img src="assets/shot-stack.jpg" alt="Three rugs lying on one another"><br><b>Stack several rugs</b><br>Rugs rest on one another, and the one you move slides on top.</td>
     <td><img src="assets/shot-curtains.jpg" alt="Two curtains hanging from the menu bar"><br><b>Curtains too</b><br>Hang curtains from the menu bar. Slide them, draw them, swish them.</td>
-    <td></td>
+    <td><img src="assets/shot-arrangements.jpg" alt="Three desktops: Work, Weekend and Movie night"><br><b>Several arrangements</b><br>A set of rugs or curtains for each mood. Switch with a click in the menu bar.</td>
   </tr>
 </table>
 
