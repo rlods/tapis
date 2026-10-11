@@ -10,6 +10,22 @@ Downloads and the update feed for **Tapis**: cloth rugs that lie on your Mac des
 
 The source code is not in this repository yet.
 
+## Features
+
+<table>
+  <tr>
+    <td width="33%"><img src="assets/shot-fold.jpg" alt="A kilim rug with a corner folded over"><br><b>Fold and curl</b><br>Grab any part to lift, fold or curl it. Double-click to smooth it out.</td>
+    <td width="33%"><img src="assets/shot-under.jpg" alt="A rug corner lifted to show desktop icons underneath"><br><b>Drapes over your icons</b><br>Each desktop icon makes a bump under the rug. Sweep the clutter under it.</td>
+    <td width="33%"><img src="assets/shot-designs.jpg" alt="Eight rugs in different patterns"><br><b>Design your own</b><br>Persian, Heriz, Kilim, Berber, Stripes, Bordered, Shag, or your own picture.</td>
+  </tr>
+  <tr>
+    <td><img src="assets/shot-stack.jpg" alt="Three rugs lying on one another"><br><b>Stack several rugs</b><br>Rugs rest on one another. Save sets of them as arrangements.</td>
+    <td><img src="assets/shot-curtains.jpg" alt="Two curtains hanging from the menu bar"><br><b>Curtains too</b><br>Hang curtains from the menu bar. Slide them, draw them, swish them.</td>
+    <td></td>
+  </tr>
+</table>
+
+
 ## Install
 
 Requires macOS 14 or later on Apple silicon.
