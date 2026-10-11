@@ -1,7 +1,6 @@
 # Tapis
 
 Downloads and the update feed for **Tapis**, a cloth rug that lies on your Mac desktop.
-Website: [rlods.github.io/tapis](https://rlods.github.io/tapis/).
 
 [![Tapis: the 30-second film](assets/film-poster.jpg)](https://rlods.github.io/tapis/assets/film.mp4)
 
