@@ -7,7 +7,7 @@ Downloads and the update feed for **Tapis**, a cloth rug that lies on your Mac d
 *Thirty seconds of the real cloth at work: hide the mess, reveal a masterpiece, roll it up and carry it away. Click to play.*
 
 - **Download:** the latest DMG is on the [Releases](https://github.com/rlods/tapis/releases/latest) page.
-- **Updates:** Tapis checks `https://rlods.github.io/tapis/appcast.xml` (Sparkle) and updates itself.
+- **Updates:** Tapis checks `https://rlods.github.io/tapis/appcast.xml` to detect and suggest updates.
 
 The source code is not in this repository.
 
