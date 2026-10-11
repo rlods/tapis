@@ -27,3 +27,7 @@ No account. No analytics. The only network call is the update check, and it send
 ## Inspiration
 
 The idea comes from [a tweet by Terkel](https://x.com/terkelg/status/2107541877176094880): a fun idea, and just as much fun to build.
+
+## Support
+
+Tapis is free. If it made your desktop a little cozier, you can [buy me a coffee on Ko-fi](https://ko-fi.com/rlods) or [sponsor it on GitHub](https://github.com/sponsors/rlods).
