@@ -1,6 +1,6 @@
 # Tapis, virtual Desktop Rugs for macOS
 
-*Tapis are physically simulated rugs that sits above or below your desktop icons and apps: sweep the clutter under it, fold it, roll it up, move it around, or weave it a pattern of your own.*
+*Tapis is a physically simulated rug that sits above or below your desktop icons and apps: sweep the clutter under it, fold it, roll it up, move it around, or weave it a pattern of your own.*
 
 Downloads and the update feed for **Tapis**, a cloth rug that lies on your Mac desktop.
 
