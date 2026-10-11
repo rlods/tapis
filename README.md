@@ -26,4 +26,4 @@ No account. No analytics. The only network call is the update check, and it send
 
 ## Inspiration
 
-The idea comes from [a tweet by Terkel](https://x.com/terkelg/status/2107541877176094880): a fun idea, and just as much fun to build. Thank you!
+The idea comes from [a tweet by Terkel](https://x.com/terkelg/status/2107541877176094880): a fun idea, and just as much fun to build.
