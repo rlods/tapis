@@ -194,6 +194,7 @@
     .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   /* The film */
+  .film h2 { margin-bottom: 20px; }
   .player { position: relative; }
   .film video {
     display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
@@ -262,7 +263,6 @@
   <section class="film">
     <div class="wrap">
       <h2>Jetzt siehst du’s. Jetzt nicht mehr.</h2>
-      <p class="muted">Eine Minute echter Stoff in Aktion: Die Vorhänge gehen auf, das Chaos verschwindet, ein Meisterwerk erscheint, und die Vorhänge schließen sich hinter der Vorstellung.</p>
       <div class="player">
         <video controls playsinline preload="none" poster="../assets/film-poster.jpg" width="1920" height="1080">
           <source src="../assets/film.webm" type='video/webm; codecs="av01.0.08M.10"'>

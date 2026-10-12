@@ -194,6 +194,7 @@
     .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   /* The film */
+  .film h2 { margin-bottom: 20px; }
   .player { position: relative; }
   .film video {
     display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
@@ -262,7 +263,6 @@
   <section class="film">
     <div class="wrap">
       <h2>现在你看得见，现在你看不见。</h2>
-      <p class="muted">一分钟真实布料效果演示：窗帘拉开，杂乱消失，杰作登场，窗帘落下，好戏收场。</p>
       <div class="player">
         <video controls playsinline preload="none" poster="../assets/film-poster.jpg" width="1920" height="1080">
           <source src="../assets/film.webm" type='video/webm; codecs="av01.0.08M.10"'>

@@ -194,6 +194,7 @@
     .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   /* The film */
+  .film h2 { margin-bottom: 20px; }
   .player { position: relative; }
   .film video {
     display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
@@ -262,7 +263,6 @@
   <section class="film">
     <div class="wrap">
       <h2>보이다가, 감쪽같이 사라집니다.</h2>
-      <p class="muted">실제 천이 움직이는 1분: 커튼이 열리면 어수선한 물건들이 사라지고 걸작이 나타나며, 커튼이 닫히면서 공연이 막을 내립니다.</p>
       <div class="player">
         <video controls playsinline preload="none" poster="../assets/film-poster.jpg" width="1920" height="1080">
           <source src="../assets/film.webm" type='video/webm; codecs="av01.0.08M.10"'>

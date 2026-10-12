@@ -194,6 +194,7 @@
     .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   /* The film */
+  .film h2 { margin-bottom: 20px; }
   .player { position: relative; }
   .film video {
     display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
@@ -262,7 +263,6 @@
   <section class="film">
     <div class="wrap">
       <h2>Agora você vê. Agora não vê mais.</h2>
-      <p class="muted">Um minuto do tecido de verdade em ação: as cortinas se abrem, a bagunça some, surge uma obra-prima e as cortinas se fecham no fim do espetáculo.</p>
       <div class="player">
         <video controls playsinline preload="none" poster="../assets/film-poster.jpg" width="1920" height="1080">
           <source src="../assets/film.webm" type='video/webm; codecs="av01.0.08M.10"'>
