@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapis — alfombras y cortinas para el escritorio de tu Mac</title>
+<meta name="description" content="Tapis pone alfombras de verdad, con simulación de tela, en el escritorio de macOS, y cortinas en la barra de menús. Dóblalas, enróllalas, esconde cosas debajo, ábrelas. Gratis, privado, nada sale de tu Mac.">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="canonical" href="https://rlods.github.io/tapis/es/">
+<link rel="alternate" hreflang="en" href="https://rlods.github.io/tapis/">
+<link rel="alternate" hreflang="fr" href="https://rlods.github.io/tapis/fr/">
+<link rel="alternate" hreflang="de" href="https://rlods.github.io/tapis/de/">
+<link rel="alternate" hreflang="es" href="https://rlods.github.io/tapis/es/">
+<link rel="alternate" hreflang="nl" href="https://rlods.github.io/tapis/nl/">
+<link rel="alternate" hreflang="ja" href="https://rlods.github.io/tapis/ja/">
+<link rel="alternate" hreflang="it" href="https://rlods.github.io/tapis/it/">
+<link rel="alternate" hreflang="pt-BR" href="https://rlods.github.io/tapis/pt-br/">
+<link rel="alternate" hreflang="zh-Hans" href="https://rlods.github.io/tapis/zh-hans/">
+<link rel="alternate" hreflang="ko" href="https://rlods.github.io/tapis/ko/">
+<link rel="alternate" hreflang="ar" href="https://rlods.github.io/tapis/ar/">
+<link rel="alternate" hreflang="tr" href="https://rlods.github.io/tapis/tr/">
+<link rel="alternate" hreflang="x-default" href="https://rlods.github.io/tapis/">
+<meta property="og:title" content="Tapis — alfombras y cortinas para el escritorio de tu Mac">
+<meta property="og:description" content="Alfombras con simulación de tela que descansan sobre tu escritorio, encima de los iconos y debajo de todas las ventanas, y cortinas que cuelgan de la barra de menús.">
+<meta property="og:image" content="https://rlods.github.io/tapis/assets/icon.png">
+<meta property="og:url" content="https://rlods.github.io/tapis/es/">
+<meta property="og:locale" content="es_ES">
+<style>
+  :root {
+    --bg: #f6f0e6;
+    --surface: #fffaf2;
+    --ink: #2a211c;
+    --muted: #6d6058;
+    --line: #e4d8c6;
+    --accent: #a8322a;
+    --accent-ink: #fff8f0;
+    --indigo: #283a6b;
+    --floor-a: #e8d3ad;
+    --floor-b: #dcc49a;
+    --shadow: 0 18px 40px -18px rgba(60, 35, 20, .45);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b1714;
+      --surface: #241f1b;
+      --ink: #f1e8dc;
+      --muted: #b3a597;
+      --line: #3a322b;
+      --accent: #d0574b;
+      --accent-ink: #1b1714;
+      --indigo: #9fb2e6;
+      --floor-a: #3a2e22;
+      --floor-b: #33281e;
+      --shadow: 0 18px 40px -18px rgba(0, 0, 0, .8);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  .hero-grid > *, .features > *, .gallery > * { min-width: 0; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: ui-serif, "New York", Georgia, serif; line-height: 1.15; font-weight: 600; }
+  /* Serif faces have no Arabic or CJK: those pages keep the system font throughout. */
+  :lang(ar) :is(h1, h2, h3, .brand span), :lang(ja) :is(h1, h2, h3), :lang(zh) :is(h1, h2, h3),
+  :lang(ko) :is(h1, h2, h3) { font-family: inherit; }
+  :lang(ar) h1, :lang(ar) h2, :lang(ar) h3 { line-height: 1.4; }
+  /* CJK titles: smaller, and broken between phrases rather than mid-word where the browser can. */
+  :lang(ja) h1, :lang(zh) h1, :lang(ko) h1 { font-size: clamp(32px, 4.6vw, 46px); line-height: 1.3; }
+  :lang(ja), :lang(zh) { word-break: auto-phrase; }
+  :lang(ko) { word-break: keep-all; }
+  h2 { font-size: clamp(28px, 4vw, 38px); margin: 0 0 12px; }
+  h3 { font-size: 20px; margin: 0 0 6px; }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--muted); }
+
+  /* Language menu */
+  .topbar { display: flex; justify-content: flex-end; padding-top: 16px; }
+  .langs { position: relative; font-size: 14px; }
+  .langs summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+  }
+  .langs summary::-webkit-details-marker { display: none; }
+  .langs summary svg { width: 15px; height: 15px; }
+  .langs ul {
+    position: absolute; inset-inline-end: 0; top: calc(100% + 6px); z-index: 2; margin: 0; padding: 6px;
+    list-style: none; min-width: 190px; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; box-shadow: var(--shadow);
+  }
+  .langs a { display: block; padding: 6px 10px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+  .langs a:hover, .langs a:focus-visible { background: var(--bg); }
+  .langs a[aria-current] { color: var(--accent); font-weight: 600; }
+  footer .langlist { flex-basis: 100%; }
+  .langs a, footer .langlist a { unicode-bidi: isolate; }   /* each name in its own direction */
+  footer .langlist a { color: var(--muted); text-decoration: none; }
+  footer .langlist a[aria-current] { color: var(--ink); }
+
+  /* Hero */
+  header.hero { padding: 0 0 40px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: center; padding-top: 32px; }
+  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .brand img { width: 64px; height: 64px; }
+  .brand span { font-family: ui-serif, "New York", Georgia, serif; font-size: 28px; font-weight: 600; }
+  h1 { font-size: clamp(38px, 6vw, 60px); margin: 0 0 18px; letter-spacing: -.01em; }
+  .lede { font-size: 20px; color: var(--muted); max-width: 32em; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 28px; }
+  .button {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: var(--accent-ink);
+    padding: 14px 24px; border-radius: 12px; text-decoration: none; font-weight: 600;
+    box-shadow: var(--shadow);
+  }
+  .button:hover { filter: brightness(1.06); }
+  .button svg { width: 18px; height: 18px; }
+  .req { font-size: 14px; color: var(--muted); }
+
+  /* The rug on the floor, with a folded corner */
+  .floor {
+    position: relative; aspect-ratio: 16 / 11; border-radius: 18px; padding: 9%;
+    background: repeating-linear-gradient(90deg, var(--floor-a) 0 46px, var(--floor-b) 46px 48px);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .rug {
+    position: relative; width: 100%; aspect-ratio: 16 / 10; transform: rotate(-4deg);
+    filter: drop-shadow(0 14px 18px rgba(50, 25, 10, .35));
+  }
+  .rug img {
+    display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 3px;
+    clip-path: polygon(0 0, 100% 0, 100% 64%, 76% 100%, 0 100%);
+  }
+  .rug .flap {
+    position: absolute; right: 0; bottom: 0; width: 24%; height: 36%;
+    background: linear-gradient(135deg, #8e7a6c 0%, #b4a293 55%, #cdbdaf 100%);
+    clip-path: polygon(0 100%, 100% 0, 0 0);
+    transform-origin: 50% 50%;
+  }
+
+  section { padding: 56px 0; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 28px; }
+  .feature p { color: var(--muted); margin: 0; }
+  .feature .glyph {
+    width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; font-size: 20px;
+  }
+  .extras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px;
+    margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .extras p { display: flex; gap: 12px; align-items: flex-start; margin: 0; color: var(--muted); font-size: 16px; }
+  .extras strong { color: var(--ink); }
+  .extras .glyph { flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--line); font-size: 16px; }
+  .feature .shot {
+    display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px;
+    box-shadow: var(--shadow); margin-bottom: 14px;
+  }
+
+  .steps { list-style: none; counter-reset: step; margin: 28px 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
+  .steps li { counter-increment: step; position: relative; padding-inline-start: 52px; min-width: 0; }
+  .steps li::before {
+    content: counter(step); position: absolute; inset-inline-start: 0; top: 0; width: 36px; height: 36px;
+    border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink);
+    font: 600 16px ui-serif, "New York", Georgia, serif;
+  }
+  .steps h3 { margin-top: 5px; }
+  .steps p { color: var(--muted); margin: 0 0 6px; }
+  .steps .how { font-size: 15px; color: var(--ink); margin: 0; }
+  kbd {
+    font: 600 13px -apple-system, BlinkMacSystemFont, sans-serif; padding: 1px 6px; border-radius: 5px;
+    background: var(--surface); border: 1px solid var(--line); border-bottom-width: 2px; white-space: nowrap;
+    unicode-bidi: isolate; direction: ltr;
+  }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+  .gallery figure { margin: 0; }
+  .gallery img {
+    width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-radius: 6px;
+    box-shadow: var(--shadow);
+  }
+  .gallery figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+
+
+  footer { padding: 32px 0 48px; font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  @media (max-width: 820px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; padding-top: 16px; }
+    .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  /* The film */
+  .player { position: relative; }
+  .film video {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+    border-radius: 16px; background: #141a2e; box-shadow: var(--shadow);
+  }
+  .player .play {
+    position: absolute; inset: 0; width: 100%; border: 0; border-radius: 16px; padding: 0;
+    background: rgba(20, 16, 12, .12); cursor: pointer; display: grid; place-items: center;
+  }
+  .player .play span {
+    width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow); transition: transform .15s;
+  }
+  .player .play:hover span, .player .play:focus-visible span { transform: scale(1.08); }
+  .player .play svg { width: 34px; height: 34px; margin-left: 6px; }
+  .player .play:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+  @media (max-width: 520px) {
+    .features, .gallery, .steps, .extras { grid-template-columns: minmax(0, 1fr); }
+    .floor { padding: 7%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap topbar">
+    <details class="langs">
+      <summary aria-label="Idioma"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M2.5 10h15M10 2.5c2.2 2.3 3.2 4.8 3.2 7.5s-1 5.2-3.2 7.5c-2.2-2.3-3.2-4.8-3.2-7.5s1-5.2 3.2-7.5z"/></svg><span>Español</span></summary>
+      <ul>
+        <li><a href="../" hreflang="en" lang="en">English</a></li>
+        <li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="../es/" hreflang="es" lang="es" aria-current="page">Español</a></li>
+        <li><a href="../nl/" hreflang="nl" lang="nl">Nederlands</a></li>
+        <li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="../it/" hreflang="it" lang="it">Italiano</a></li>
+        <li><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+        <li><a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+        <li><a href="../ko/" hreflang="ko" lang="ko">한국어</a></li>
+        <li><a href="../ar/" hreflang="ar" lang="ar">العربية</a></li>
+        <li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li>
+      </ul>
+    </details>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="brand"><img src="../assets/icon.png" alt=""><span>Tapis</span></div>
+      <h1>Alfombras y cortinas de verdad para el escritorio de tu Mac.</h1>
+      <p class="lede">Tapis extiende una suave alfombra con simulación de tela sobre tu escritorio, encima de tus iconos y debajo de todas las ventanas. Coge una esquina y dóblala. Enróllala. Esconde cosas debajo. O cuelga cortinas de la barra de menús y córrelas sobre tu escritorio.</p>
+      <div class="cta">
+        <a class="button" id="download" href="https://github.com/rlods/tapis/releases/latest">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 2h2v9.2l3.3-3.3 1.4 1.4L10 15 4.3 9.3l1.4-1.4L9 11.2V2zM3 16h14v2H3z"/></svg>
+          <span>Descargar para Mac</span>
+        </a>
+        <span class="req">Gratis · macOS 14 o posterior · Apple silicon</span>
+      </div>
+    </div>
+    <div class="floor" aria-hidden="true">
+      <div class="rug"><img src="../assets/persian.jpg" alt=""><div class="flap"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="film">
+    <div class="wrap">
+      <h2>Ahora lo ves, ahora no.</h2>
+      <p class="muted">Un minuto de la tela de verdad en acción: las cortinas se abren, el desorden desaparece, surge una obra maestra y las cortinas se cierran sobre el espectáculo.</p>
+      <div class="player">
+        <video controls playsinline preload="none" poster="../assets/film-poster.jpg" width="1920" height="1080">
+          <source src="../assets/film.webm" type='video/webm; codecs="av01.0.08M.10"'>
+          <source src="../assets/film.mp4" type="video/mp4">
+        </video>
+        <button class="play" type="button" aria-label="Ver la película">
+          <span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5 3l12 7-12 7z"/></svg></span>
+        </button>
+      </div>
+      <script>
+        (() => {
+          const player = document.currentScript.previousElementSibling;
+          const video = player.querySelector('video'), play = player.querySelector('.play');
+          video.controls = false;   // the big button until it starts; the usual controls after
+          const start = () => { play.remove(); video.controls = true; };
+          play.addEventListener('click', () => { start(); video.play(); });
+          video.addEventListener('play', start, { once: true });
+        })();
+      </script>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Se comporta como la tela</h2>
+      <p class="muted">Se mueve como una pesada alfombra de lana. Levanta una esquina y vuelve a caer. Dóblala y se queda doblada.</p>
+      <div class="features">
+        <div class="feature"><img class="shot" src="../assets/shot-fold.jpg" alt="Una alfombra kilim con una esquina doblada" loading="lazy"><h3>Dobla y enrolla</h3><p>Coge cualquier parte y arrastra para levantarla, doblarla o enrollarla. Arrastra un pliegue hacia atrás para deshacerlo, o haz doble clic para alisarlo todo.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-under.jpg" alt="Una esquina de alfombra levantada que deja ver los iconos del escritorio debajo" loading="lazy"><h3>Cubre tus iconos</h3><p>Cada icono del escritorio forma un bulto bajo la alfombra. Los montones de iconos forman bultos más grandes.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-designs.jpg" alt="Ocho alfombras con distintos patrones, una con la foto de un gato" loading="lazy"><h3>Diseña la tuya</h3><p>Persa, Heriz, Kilim, Bereber, Rayas, Con cenefa o Pelo largo, con los colores, flecos, desgaste y altura de pelo que quieras.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-stack.jpg" alt="Tres alfombras una encima de otra" loading="lazy"><h3>Apila varias alfombras</h3><p>Las alfombras descansan unas sobre otras, y la que mueves se desliza por encima.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-curtains.jpg" alt="Una cortina de rayas y una azul colgadas de la barra de menús, balanceándose" loading="lazy"><h3>Y también cortinas</h3><p>Cuelga cortinas de la barra de menús. Deslízalas a lo largo, ábrelas o ciérralas, agítalas: vuelven a caer en sus pliegues. Terciopelo, lino, rayas, con cenefa o tu propia imagen.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-arrangements.jpg" alt="Tres escritorios: Trabajo, Fin de semana y Noche de cine" loading="lazy"><h3>Varias disposiciones</h3><p>Ten un juego de alfombras o cortinas para cada momento, uno para trabajar y otro para el fin de semana, y cambia con un clic en la barra de menús.</p></div>
+      </div>
+      <div class="extras">
+        <p><span class="glyph" aria-hidden="true">🔈</span><span><strong>Sonidos de la tela.</strong> Un suave roce amortiguado de lana mientras se mueve, y un golpe suave cuando cae un pliegue. Se desactivan con un clic.</span></p>
+        <p><span class="glyph" aria-hidden="true">🍃</span><span><strong>Ligera para tu Mac.</strong> Una alfombra en reposo apenas usa CPU. Sin ventiladores ni gasto de batería, aunque viva en tu escritorio todo el día.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="wrap">
+      <h2>Apoyar Tapis</h2>
+      <p class="muted">Tapis es gratis. Si ha hecho tu escritorio un poco más acogedor, puedes <a href="https://ko-fi.com/rlods">invitarme a un café en Ko-fi</a> o <a href="https://github.com/sponsors/rlods">patrocinarlo en GitHub</a>.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>Cómo se usa</h2>
+      <p class="muted">Todo se hace con el ratón sobre la alfombra y desde el icono de Tapis en la barra de menús.</p>
+      <ol class="steps">
+        <li><h3>Dóblala</h3><p>Coge cualquier parte de la alfombra y arrástrala para levantarla, doblarla o enrollarla. Los pliegues se quedan donde los dejas.</p><p class="how">Arrastra un pliegue hacia atrás para deshacerlo. <strong>Haz doble clic</strong> para alisar toda la alfombra.</p></li>
+        <li><h3>Mantén pulsado para editar</h3><p><strong>Mantén pulsada</strong> una alfombra medio segundo: queda seleccionada y no se dobla mientras la editas.</p><p class="how">Arrástrala para moverla, arrastra una esquina para cambiar su tamaño, arrastra el tirador superior para girarla (mantén <kbd>⇧</kbd> para girar de 15° en 15°). Cuando termines, vuelve a hacer clic en ella o en cualquier otro sitio.</p></li>
+        <li><h3>Hazla tuya</h3><p>Una alfombra seleccionada tiene debajo una pequeña barra de herramientas. <strong>Diseño</strong> abre el patrón, los colores, los flecos, el desgaste y la altura del pelo.</p><p class="how">La barra de herramientas también la gira 90°, la alisa o la quita.</p></li>
+        <li><h3>Pásala bajo tus iconos</h3><p>Por omisión, una alfombra queda encima de los iconos del escritorio, que forman bultos debajo. También puede quedar <strong>debajo</strong> de ellos, como un tapete bajo tus archivos.</p><p class="how">En la barra de herramientas, elige <strong>Colocar bajo los iconos</strong>. Para volver a alcanzarla, elige <strong>Reorganizar alfombras</strong> en el menú.</p></li>
+        <li><h3>Añade más alfombras</h3><p>Elige <strong>Añadir alfombra</strong> en el menú (<kbd>⌘N</kbd>). Las alfombras se apilan unas sobre otras, y la que mueves se desliza por encima.</p><p class="how">Desmarca <strong>Mostrar alfombras</strong> para despejar el escritorio un momento.</p></li>
+        <li><h3>Cuelga cortinas</h3><p>Elige <strong>Cortinas</strong> en el menú: una cortina cuelga de la barra de menús. Arrástrala de lado para deslizarla, y contra otra para empujarla.</p><p class="how"><kbd>⌘</kbd>-doble clic la abre o la cierra, doble clic la alisa. Mantenla pulsada para cambiar su tamaño con los tiradores laterales. <strong>Añadir cortina</strong> cuelga otra.</p></li>
+        <li><h3>Cambia de disposición</h3><p>Una disposición es un juego de alfombras, o de cortinas. Ten una para trabajar y otra para el fin de semana, y cambia con un clic en el menú.</p><p class="how"><strong>Gestionar disposiciones…</strong> las crea, duplica, renombra y elimina. Todo se guarda solo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Elige un patrón</h2>
+      <p class="muted">La app dibuja cada patrón, con la paleta que más te guste.</p>
+      <div class="gallery">
+        <figure><img src="../assets/persian.jpg" alt="" loading="lazy"><figcaption>Persa</figcaption></figure>
+        <figure><img src="../assets/heriz.jpg" alt="" loading="lazy"><figcaption>Heriz</figcaption></figure>
+        <figure><img src="../assets/kilim.jpg" alt="" loading="lazy"><figcaption>Kilim</figcaption></figure>
+        <figure><img src="../assets/beniOurain.jpg" alt="" loading="lazy"><figcaption>Bereber</figcaption></figure>
+        <figure><img src="../assets/stripes.jpg" alt="" loading="lazy"><figcaption>Rayas</figcaption></figure>
+        <figure><img src="../assets/bordered.jpg" alt="" loading="lazy"><figcaption>Con cenefa</figcaption></figure>
+        <figure><img src="../assets/shag.jpg" alt="" loading="lazy"><figcaption>Pelo largo</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2>Instalación</h2>
+      <p class="muted">Gratis. Requiere macOS 14 o posterior en Apple silicon.</p>
+      <ol class="steps">
+        <li><h3>Descarga</h3><p>Consigue el DMG más reciente en la página de <a href="https://github.com/rlods/tapis/releases/latest">versiones</a>.</p></li>
+        <li><h3>Arrastra a Aplicaciones</h3><p>Abre el DMG y arrastra <strong>Tapis</strong> a tu carpeta <strong>Aplicaciones</strong>.</p></li>
+        <li><h3>Ábrela</h3><p>Abre Tapis desde Aplicaciones. Su icono aparece en la barra de menús.</p></li>
+        <li><h3>Mantente al día</h3><p>Tapis te avisa cuando sale una nueva versión y te ofrece actualizar.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <h2>Privacidad desde el diseño</h2>
+      <p class="muted">Sin cuenta. Sin analíticas. La única conexión a la red es la comprobación de actualizaciones, y no envía nada sobre ti. Actualizar siempre es decisión tuya. Tapis funciona por completo en tu Mac, y tus alfombras y cortinas nunca salen de él.</p>
+      <div class="features">
+        <div class="feature"><div class="glyph">🏠</div><h3>Guardado en tu Mac</h3><p>Tus alfombras, cortinas, diseños y disposiciones se guardan solo en tu Mac. No se sincroniza ni se sube nada.</p></div>
+        <div class="feature"><div class="glyph">🗂</div><h3>Tu escritorio sigue siendo tuyo</h3><p>Tapis pregunta al Finder dónde están tus iconos, solo para que la alfombra pueda cubrirlos. Esa información nunca sale de tu Mac.</p></div>
+        <div class="feature"><div class="glyph">🔄</div><h3>Solo una comprobación, para actualizar</h3><p>Para saber si hay una nueva versión, Tapis lee una lista pública en GitHub. No envía nada sobre ti ni sobre tu Mac.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="credits">
+    <div class="wrap">
+      <h2>Inspiración</h2>
+      <p class="muted">Tapis está inspirado en <a href="https://x.com/terkelg/status/2107541877176094880">un tuit de Terkel</a>. Una idea muy divertida, y construirlo fue igual de divertido.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Romain Lods · <a href="https://x.com/rolographic">@rolographic</a></span>
+    <span><a href="#install">Instalación</a> · <a href="https://github.com/rlods/tapis/releases">Todas las versiones</a> · <a href="#privacy">Privacidad</a> · <a href="#support">Apoyar</a></span>
+    <nav class="langlist" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../es/" hreflang="es" lang="es" aria-current="page">Español</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a> · <a href="../ar/" hreflang="ar" lang="ar">العربية</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></nav>
+  </div>
+</footer>
+
+<script data-goatcounter="https://rlods.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

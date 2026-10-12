@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapis — Teppiche und Vorhänge für deinen Mac-Schreibtisch</title>
+<meta name="description" content="Tapis legt echte, stoffsimulierte Teppiche auf deinen macOS-Schreibtisch und hängt Vorhänge an die Menüleiste. Falte sie, roll sie ein, kehr Dinge darunter, zieh sie auf. Kostenlos, privat, nichts verlässt deinen Mac.">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="canonical" href="https://rlods.github.io/tapis/de/">
+<link rel="alternate" hreflang="en" href="https://rlods.github.io/tapis/">
+<link rel="alternate" hreflang="fr" href="https://rlods.github.io/tapis/fr/">
+<link rel="alternate" hreflang="de" href="https://rlods.github.io/tapis/de/">
+<link rel="alternate" hreflang="es" href="https://rlods.github.io/tapis/es/">
+<link rel="alternate" hreflang="nl" href="https://rlods.github.io/tapis/nl/">
+<link rel="alternate" hreflang="ja" href="https://rlods.github.io/tapis/ja/">
+<link rel="alternate" hreflang="it" href="https://rlods.github.io/tapis/it/">
+<link rel="alternate" hreflang="pt-BR" href="https://rlods.github.io/tapis/pt-br/">
+<link rel="alternate" hreflang="zh-Hans" href="https://rlods.github.io/tapis/zh-hans/">
+<link rel="alternate" hreflang="ko" href="https://rlods.github.io/tapis/ko/">
+<link rel="alternate" hreflang="ar" href="https://rlods.github.io/tapis/ar/">
+<link rel="alternate" hreflang="tr" href="https://rlods.github.io/tapis/tr/">
+<link rel="alternate" hreflang="x-default" href="https://rlods.github.io/tapis/">
+<meta property="og:title" content="Tapis — Teppiche und Vorhänge für deinen Mac-Schreibtisch">
+<meta property="og:description" content="Stoffsimulierte Teppiche, die auf deinem Schreibtisch liegen, über den Symbolen und unter jedem Fenster, und Vorhänge, die von der Menüleiste hängen.">
+<meta property="og:image" content="https://rlods.github.io/tapis/assets/icon.png">
+<meta property="og:url" content="https://rlods.github.io/tapis/de/">
+<meta property="og:locale" content="de_DE">
+<style>
+  :root {
+    --bg: #f6f0e6;
+    --surface: #fffaf2;
+    --ink: #2a211c;
+    --muted: #6d6058;
+    --line: #e4d8c6;
+    --accent: #a8322a;
+    --accent-ink: #fff8f0;
+    --indigo: #283a6b;
+    --floor-a: #e8d3ad;
+    --floor-b: #dcc49a;
+    --shadow: 0 18px 40px -18px rgba(60, 35, 20, .45);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b1714;
+      --surface: #241f1b;
+      --ink: #f1e8dc;
+      --muted: #b3a597;
+      --line: #3a322b;
+      --accent: #d0574b;
+      --accent-ink: #1b1714;
+      --indigo: #9fb2e6;
+      --floor-a: #3a2e22;
+      --floor-b: #33281e;
+      --shadow: 0 18px 40px -18px rgba(0, 0, 0, .8);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  .hero-grid > *, .features > *, .gallery > * { min-width: 0; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: ui-serif, "New York", Georgia, serif; line-height: 1.15; font-weight: 600; }
+  /* Serif faces have no Arabic or CJK: those pages keep the system font throughout. */
+  :lang(ar) :is(h1, h2, h3, .brand span), :lang(ja) :is(h1, h2, h3), :lang(zh) :is(h1, h2, h3),
+  :lang(ko) :is(h1, h2, h3) { font-family: inherit; }
+  :lang(ar) h1, :lang(ar) h2, :lang(ar) h3 { line-height: 1.4; }
+  /* CJK titles: smaller, and broken between phrases rather than mid-word where the browser can. */
+  :lang(ja) h1, :lang(zh) h1, :lang(ko) h1 { font-size: clamp(32px, 4.6vw, 46px); line-height: 1.3; }
+  :lang(ja), :lang(zh) { word-break: auto-phrase; }
+  :lang(ko) { word-break: keep-all; }
+  h2 { font-size: clamp(28px, 4vw, 38px); margin: 0 0 12px; }
+  h3 { font-size: 20px; margin: 0 0 6px; }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--muted); }
+
+  /* Language menu */
+  .topbar { display: flex; justify-content: flex-end; padding-top: 16px; }
+  .langs { position: relative; font-size: 14px; }
+  .langs summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+  }
+  .langs summary::-webkit-details-marker { display: none; }
+  .langs summary svg { width: 15px; height: 15px; }
+  .langs ul {
+    position: absolute; inset-inline-end: 0; top: calc(100% + 6px); z-index: 2; margin: 0; padding: 6px;
+    list-style: none; min-width: 190px; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; box-shadow: var(--shadow);
+  }
+  .langs a { display: block; padding: 6px 10px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+  .langs a:hover, .langs a:focus-visible { background: var(--bg); }
+  .langs a[aria-current] { color: var(--accent); font-weight: 600; }
+  footer .langlist { flex-basis: 100%; }
+  .langs a, footer .langlist a { unicode-bidi: isolate; }   /* each name in its own direction */
+  footer .langlist a { color: var(--muted); text-decoration: none; }
+  footer .langlist a[aria-current] { color: var(--ink); }
+
+  /* Hero */
+  header.hero { padding: 0 0 40px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: center; padding-top: 32px; }
+  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .brand img { width: 64px; height: 64px; }
+  .brand span { font-family: ui-serif, "New York", Georgia, serif; font-size: 28px; font-weight: 600; }
+  h1 { font-size: clamp(38px, 6vw, 60px); margin: 0 0 18px; letter-spacing: -.01em; }
+  .lede { font-size: 20px; color: var(--muted); max-width: 32em; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 28px; }
+  .button {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: var(--accent-ink);
+    padding: 14px 24px; border-radius: 12px; text-decoration: none; font-weight: 600;
+    box-shadow: var(--shadow);
+  }
+  .button:hover { filter: brightness(1.06); }
+  .button svg { width: 18px; height: 18px; }
+  .req { font-size: 14px; color: var(--muted); }
+
+  /* The rug on the floor, with a folded corner */
+  .floor {
+    position: relative; aspect-ratio: 16 / 11; border-radius: 18px; padding: 9%;
+    background: repeating-linear-gradient(90deg, var(--floor-a) 0 46px, var(--floor-b) 46px 48px);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .rug {
+    position: relative; width: 100%; aspect-ratio: 16 / 10; transform: rotate(-4deg);
+    filter: drop-shadow(0 14px 18px rgba(50, 25, 10, .35));
+  }
+  .rug img {
+    display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 3px;
+    clip-path: polygon(0 0, 100% 0, 100% 64%, 76% 100%, 0 100%);
+  }
+  .rug .flap {
+    position: absolute; right: 0; bottom: 0; width: 24%; height: 36%;
+    background: linear-gradient(135deg, #8e7a6c 0%, #b4a293 55%, #cdbdaf 100%);
+    clip-path: polygon(0 100%, 100% 0, 0 0);
+    transform-origin: 50% 50%;
+  }
+
+  section { padding: 56px 0; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 28px; }
+  .feature p { color: var(--muted); margin: 0; }
+  .feature .glyph {
+    width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; font-size: 20px;
+  }
+  .extras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px;
+    margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .extras p { display: flex; gap: 12px; align-items: flex-start; margin: 0; color: var(--muted); font-size: 16px; }
+  .extras strong { color: var(--ink); }
+  .extras .glyph { flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--line); font-size: 16px; }
+  .feature .shot {
+    display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px;
+    box-shadow: var(--shadow); margin-bottom: 14px;
+  }
+
+  .steps { list-style: none; counter-reset: step; margin: 28px 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
+  .steps li { counter-increment: step; position: relative; padding-inline-start: 52px; min-width: 0; }
+  .steps li::before {
+    content: counter(step); position: absolute; inset-inline-start: 0; top: 0; width: 36px; height: 36px;
+    border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink);
+    font: 600 16px ui-serif, "New York", Georgia, serif;
+  }
+  .steps h3 { margin-top: 5px; }
+  .steps p { color: var(--muted); margin: 0 0 6px; }
+  .steps .how { font-size: 15px; color: var(--ink); margin: 0; }
+  kbd {
+    font: 600 13px -apple-system, BlinkMacSystemFont, sans-serif; padding: 1px 6px; border-radius: 5px;
+    background: var(--surface); border: 1px solid var(--line); border-bottom-width: 2px; white-space: nowrap;
+    unicode-bidi: isolate; direction: ltr;
+  }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+  .gallery figure { margin: 0; }
+  .gallery img {
+    width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-radius: 6px;
+    box-shadow: var(--shadow);
+  }
+  .gallery figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+
+
+  footer { padding: 32px 0 48px; font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  @media (max-width: 820px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; padding-top: 16px; }
+    .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  /* The film */
+  .player { position: relative; }
+  .film video {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+    border-radius: 16px; background: #141a2e; box-shadow: var(--shadow);
+  }
+  .player .play {
+    position: absolute; inset: 0; width: 100%; border: 0; border-radius: 16px; padding: 0;
+    background: rgba(20, 16, 12, .12); cursor: pointer; display: grid; place-items: center;
+  }
+  .player .play span {
+    width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow); transition: transform .15s;
+  }
+  .player .play:hover span, .player .play:focus-visible span { transform: scale(1.08); }
+  .player .play svg { width: 34px; height: 34px; margin-left: 6px; }
+  .player .play:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+  @media (max-width: 520px) {
+    .features, .gallery, .steps, .extras { grid-template-columns: minmax(0, 1fr); }
+    .floor { padding: 7%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap topbar">
+    <details class="langs">
+      <summary aria-label="Sprache"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M2.5 10h15M10 2.5c2.2 2.3 3.2 4.8 3.2 7.5s-1 5.2-3.2 7.5c-2.2-2.3-3.2-4.8-3.2-7.5s1-5.2 3.2-7.5z"/></svg><span>Deutsch</span></summary>
+      <ul>
+        <li><a href="../" hreflang="en" lang="en">English</a></li>
+        <li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="../de/" hreflang="de" lang="de" aria-current="page">Deutsch</a></li>
+        <li><a href="../es/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="../nl/" hreflang="nl" lang="nl">Nederlands</a></li>
+        <li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="../it/" hreflang="it" lang="it">Italiano</a></li>
+        <li><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+        <li><a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+        <li><a href="../ko/" hreflang="ko" lang="ko">한국어</a></li>
+        <li><a href="../ar/" hreflang="ar" lang="ar">العربية</a></li>
+        <li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li>
+      </ul>
+    </details>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="brand"><img src="../assets/icon.png" alt=""><span>Tapis</span></div>
+      <h1>Echte Teppiche und Vorhänge für deinen Mac-Schreibtisch.</h1>
+      <p class="lede">Tapis legt einen weichen, stoffsimulierten Teppich auf deinen Schreibtisch, über deine Symbole und unter jedes Fenster. Pack eine Ecke und falte sie um. Roll ihn ein. Kehr Dinge darunter. Oder häng Vorhänge an die Menüleiste und zieh sie über deinen Schreibtisch.</p>
+      <div class="cta">
+        <a class="button" id="download" href="https://github.com/rlods/tapis/releases/latest">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 2h2v9.2l3.3-3.3 1.4 1.4L10 15 4.3 9.3l1.4-1.4L9 11.2V2zM3 16h14v2H3z"/></svg>
+          <span>Für Mac laden</span>
+        </a>
+        <span class="req">Kostenlos · macOS 14 oder neuer · Apple Chip</span>
+      </div>
+    </div>
+    <div class="floor" aria-hidden="true">
+      <div class="rug"><img src="../assets/persian.jpg" alt=""><div class="flap"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="film">
+    <div class="wrap">
+      <h2>Jetzt siehst du’s. Jetzt nicht mehr.</h2>
+      <p class="muted">Eine Minute echter Stoff in Aktion: Die Vorhänge gehen auf, das Chaos verschwindet, ein Meisterwerk erscheint, und die Vorhänge schließen sich hinter der Vorstellung.</p>
+      <div class="player">
+        <video controls playsinline preload="none" poster="../assets/film-poster.jpg" width="1920" height="1080">
+          <source src="../assets/film.webm" type='video/webm; codecs="av01.0.08M.10"'>
+          <source src="../assets/film.mp4" type="video/mp4">
+        </video>
+        <button class="play" type="button" aria-label="Film abspielen">
+          <span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5 3l12 7-12 7z"/></svg></span>
+        </button>
+      </div>
+      <script>
+        (() => {
+          const player = document.currentScript.previousElementSibling;
+          const video = player.querySelector('video'), play = player.querySelector('.play');
+          video.controls = false;   // the big button until it starts; the usual controls after
+          const start = () => { play.remove(); video.controls = true; };
+          play.addEventListener('click', () => { start(); video.play(); });
+          video.addEventListener('play', start, { once: true });
+        })();
+      </script>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Er verhält sich wie Stoff</h2>
+      <p class="muted">Er bewegt sich wie ein schwerer Wollteppich. Heb eine Ecke an, und sie fällt zurück. Falte ihn, und er bleibt gefaltet.</p>
+      <div class="features">
+        <div class="feature"><img class="shot" src="../assets/shot-fold.jpg" alt="Ein Kelim-Teppich mit umgeschlagener Ecke" loading="lazy"><h3>Falten und einrollen</h3><p>Pack eine beliebige Stelle und zieh, um sie anzuheben, zu falten oder einzurollen. Zieh eine Falte zurück, um sie aufzuheben, oder doppelklicke, um alles zu glätten.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-under.jpg" alt="Eine angehobene Teppichecke, darunter Schreibtischsymbole" loading="lazy"><h3>Legt sich über deine Symbole</h3><p>Jedes Schreibtischsymbol wirft eine Beule unter dem Teppich. Stapel von Symbolen ergeben größere Beulen.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-designs.jpg" alt="Acht Teppiche mit verschiedenen Mustern, einer mit einem Katzenbild" loading="lazy"><h3>Gestalte deinen eigenen</h3><p>Perser, Heris, Kelim, Berber, Streifen, Mit Bordüre oder Hochflor – mit Farben, Fransen, Abnutzung und Florhöhe nach deiner Wahl.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-stack.jpg" alt="Drei Teppiche, die übereinanderliegen" loading="lazy"><h3>Mehrere Teppiche stapeln</h3><p>Teppiche liegen aufeinander, und der, den du bewegst, gleitet nach oben.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-curtains.jpg" alt="Ein gestreifter und ein blauer Vorhang, die schwingend von der Menüleiste hängen" loading="lazy"><h3>Auch Vorhänge</h3><p>Häng Vorhänge an die Menüleiste. Schieb sie daran entlang, zieh sie auf oder zu, lass sie schwingen: Sie fallen zurück in ihre Falten. Samt, Leinen, Streifen, mit Bordüre oder dein eigenes Bild.</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-arrangements.jpg" alt="Drei Schreibtische: Arbeit, Wochenende und Filmabend" loading="lazy"><h3>Mehrere Anordnungen</h3><p>Leg dir für jede Stimmung Teppiche oder Vorhänge zurecht, eine Anordnung für die Arbeit, eine fürs Wochenende, und wechsle mit einem Klick in der Menüleiste.</p></div>
+      </div>
+      <div class="extras">
+        <p><span class="glyph" aria-hidden="true">🔈</span><span><strong>Stoffgeräusche.</strong> Ein weiches, gedämpftes Wollrascheln, während er sich bewegt, und ein sanftes Plumpsen, wenn eine Falte landet. Mit einem Klick abschaltbar.</span></p>
+        <p><span class="glyph" aria-hidden="true">🍃</span><span><strong>Schont deinen Mac.</strong> Ein ruhender Teppich braucht kaum CPU. Kein Lüfter, kein leerer Akku, obwohl er den ganzen Tag auf deinem Schreibtisch liegt.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="wrap">
+      <h2>Tapis unterstützen</h2>
+      <p class="muted">Tapis ist kostenlos. Wenn es deinen Schreibtisch ein bisschen gemütlicher gemacht hat, kannst du mir <a href="https://ko-fi.com/rlods">auf Ko-fi einen Kaffee spendieren</a> oder <a href="https://github.com/sponsors/rlods">es auf GitHub sponsern</a>.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>So funktioniert’s</h2>
+      <p class="muted">Alles geschieht mit der Maus auf dem Teppich und über das Tapis-Symbol in der Menüleiste.</p>
+      <ol class="steps">
+        <li><h3>Falte ihn</h3><p>Pack eine beliebige Stelle des Teppichs und zieh, um ihn anzuheben, zu falten oder einzurollen. Falten bleiben, wo du sie lässt.</p><p class="how">Zieh eine Falte zurück, um sie aufzuheben. Ein <strong>Doppelklick</strong> glättet den ganzen Teppich.</p></li>
+        <li><h3>Gedrückt halten zum Bearbeiten</h3><p>Halte einen Teppich eine halbe Sekunde lang <strong>gedrückt</strong>: Er ist ausgewählt und faltet sich nicht, während du ihn bearbeitest.</p><p class="how">Zieh, um ihn zu verschieben, zieh an einer Ecke, um die Größe zu ändern, zieh am oberen Knopf, um ihn zu drehen (halte <kbd>⇧</kbd> gedrückt für 15°-Schritte). Klick ihn erneut oder irgendwo anders an, wenn du fertig bist.</p></li>
+        <li><h3>Mach ihn zu deinem</h3><p>Unter einem ausgewählten Teppich erscheint eine kleine Werkzeugleiste. <strong>Gestalten</strong> öffnet Muster, Farben, Fransen, Abnutzung und Florhöhe.</p><p class="how">Über die Werkzeugleiste kannst du ihn auch um 90° drehen, glätten oder entfernen.</p></li>
+        <li><h3>Schieb ihn unter deine Symbole</h3><p>Standardmäßig liegt ein Teppich über deinen Schreibtischsymbolen, die darunter Beulen werfen. Er kann aber auch <strong>unter</strong> ihnen liegen, wie eine Unterlage für deine Dateien.</p><p class="how">Wähle in der Werkzeugleiste <strong>Unter die Symbole legen</strong>. Um ihn wieder zu erreichen, wähle <strong>Teppiche anordnen</strong> im Menü.</p></li>
+        <li><h3>Weitere Teppiche hinzufügen</h3><p>Wähle <strong>Teppich hinzufügen</strong> im Menü (<kbd>⌘N</kbd>). Teppiche stapeln sich, und der, den du bewegst, gleitet nach oben.</p><p class="how">Deaktiviere <strong>Teppiche einblenden</strong>, um den Schreibtisch kurz freizuräumen.</p></li>
+        <li><h3>Vorhänge aufhängen</h3><p>Wähle <strong>Vorhänge</strong> im Menü: Ein Vorhang hängt von der Menüleiste. Zieh ihn seitwärts, um ihn entlangzuschieben, und gegen einen anderen, um diesen wegzuschieben.</p><p class="how"><kbd>⌘</kbd>-Doppelklick zieht ihn auf oder zu, ein Doppelklick glättet ihn. Halte ihn gedrückt, um seine Größe an den seitlichen Griffen zu ändern. <strong>Vorhang hinzufügen</strong> hängt einen weiteren auf.</p></li>
+        <li><h3>Anordnungen wechseln</h3><p>Eine Anordnung ist ein Satz Teppiche oder Vorhänge. Leg dir eine für die Arbeit und eine fürs Wochenende an und wechsle mit einem Klick im Menü.</p><p class="how"><strong>Anordnungen verwalten …</strong> erstellt, dupliziert, benennt und löscht sie. Alles wird automatisch gesichert.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Wähl ein Muster</h2>
+      <p class="muted">Jedes Muster zeichnet die App selbst, in jeder Farbpalette, die dir gefällt.</p>
+      <div class="gallery">
+        <figure><img src="../assets/persian.jpg" alt="" loading="lazy"><figcaption>Perser</figcaption></figure>
+        <figure><img src="../assets/heriz.jpg" alt="" loading="lazy"><figcaption>Heris</figcaption></figure>
+        <figure><img src="../assets/kilim.jpg" alt="" loading="lazy"><figcaption>Kelim</figcaption></figure>
+        <figure><img src="../assets/beniOurain.jpg" alt="" loading="lazy"><figcaption>Berber</figcaption></figure>
+        <figure><img src="../assets/stripes.jpg" alt="" loading="lazy"><figcaption>Streifen</figcaption></figure>
+        <figure><img src="../assets/bordered.jpg" alt="" loading="lazy"><figcaption>Mit Bordüre</figcaption></figure>
+        <figure><img src="../assets/shag.jpg" alt="" loading="lazy"><figcaption>Hochflor</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2>Installieren</h2>
+      <p class="muted">Kostenlos. Erfordert macOS 14 oder neuer auf einem Mac mit Apple Chip.</p>
+      <ol class="steps">
+        <li><h3>Laden</h3><p>Hol dir das neueste DMG auf der Seite <a href="https://github.com/rlods/tapis/releases/latest">Releases</a>.</p></li>
+        <li><h3>In „Programme“ ziehen</h3><p>Öffne das DMG und zieh <strong>Tapis</strong> in deinen Ordner <strong>„Programme“</strong>.</p></li>
+        <li><h3>Starten</h3><p>Öffne Tapis aus dem Ordner „Programme“. Sein Symbol erscheint in der Menüleiste.</p></li>
+        <li><h3>Immer aktuell</h3><p>Tapis sagt dir, wenn eine neue Version erscheint, und bietet dir das Update an.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <h2>Datenschutz von Anfang an</h2>
+      <p class="muted">Kein Account. Keine Analysedaten. Die einzige Netzwerkverbindung ist die Suche nach Updates, und dabei wird nichts über dich gesendet. Ob du aktualisierst, entscheidest immer du. Tapis läuft vollständig auf deinem Mac, und deine Teppiche und Vorhänge verlassen ihn nie.</p>
+      <div class="features">
+        <div class="feature"><div class="glyph">🏠</div><h3>Auf deinem Mac gesichert</h3><p>Deine Teppiche, Vorhänge, Designs und Anordnungen werden nur auf deinem Mac gespeichert. Nichts wird synchronisiert oder hochgeladen.</p></div>
+        <div class="feature"><div class="glyph">🗂</div><h3>Dein Schreibtisch bleibt deiner</h3><p>Tapis fragt den Finder, wo deine Symbole liegen, nur damit sich der Teppich über sie legen kann. Diese Information verlässt deinen Mac nie.</p></div>
+        <div class="feature"><div class="glyph">🔄</div><h3>Nur eine Abfrage, für Updates</h3><p>Um zu prüfen, ob es eine neue Version gibt, liest Tapis eine öffentliche Liste auf GitHub. Dabei wird nichts über dich oder deinen Mac gesendet.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="credits">
+    <div class="wrap">
+      <h2>Inspiration</h2>
+      <p class="muted">Tapis ist inspiriert von <a href="https://x.com/terkelg/status/2107541877176094880">einem Tweet von Terkel</a>. So eine witzige Idee, und es hat genauso viel Spaß gemacht, sie umzusetzen.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Romain Lods · <a href="https://x.com/rolographic">@rolographic</a></span>
+    <span><a href="#install">Installieren</a> · <a href="https://github.com/rlods/tapis/releases">Alle Releases</a> · <a href="#privacy">Datenschutz</a> · <a href="#support">Unterstützen</a></span>
+    <nav class="langlist" aria-label="Sprache"><a href="../" hreflang="en" lang="en">English</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../de/" hreflang="de" lang="de" aria-current="page">Deutsch</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a> · <a href="../ar/" hreflang="ar" lang="ar">العربية</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></nav>
+  </div>
+</footer>
+
+<script data-goatcounter="https://rlods.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

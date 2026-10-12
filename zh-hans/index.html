@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapis — 为你的 Mac 桌面铺上地毯、挂上窗帘</title>
+<meta name="description" content="Tapis 在你的 macOS 桌面上铺上真实布料模拟的地毯，并在菜单栏挂上窗帘。你可以折叠、卷起地毯，把东西扫到地毯下面，也可以拉开窗帘。免费、注重隐私，任何数据都不会离开你的 Mac。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="canonical" href="https://rlods.github.io/tapis/zh-hans/">
+<link rel="alternate" hreflang="en" href="https://rlods.github.io/tapis/">
+<link rel="alternate" hreflang="fr" href="https://rlods.github.io/tapis/fr/">
+<link rel="alternate" hreflang="de" href="https://rlods.github.io/tapis/de/">
+<link rel="alternate" hreflang="es" href="https://rlods.github.io/tapis/es/">
+<link rel="alternate" hreflang="nl" href="https://rlods.github.io/tapis/nl/">
+<link rel="alternate" hreflang="ja" href="https://rlods.github.io/tapis/ja/">
+<link rel="alternate" hreflang="it" href="https://rlods.github.io/tapis/it/">
+<link rel="alternate" hreflang="pt-BR" href="https://rlods.github.io/tapis/pt-br/">
+<link rel="alternate" hreflang="zh-Hans" href="https://rlods.github.io/tapis/zh-hans/">
+<link rel="alternate" hreflang="ko" href="https://rlods.github.io/tapis/ko/">
+<link rel="alternate" hreflang="ar" href="https://rlods.github.io/tapis/ar/">
+<link rel="alternate" hreflang="tr" href="https://rlods.github.io/tapis/tr/">
+<link rel="alternate" hreflang="x-default" href="https://rlods.github.io/tapis/">
+<meta property="og:title" content="Tapis — 为你的 Mac 桌面铺上地毯、挂上窗帘">
+<meta property="og:description" content="布料模拟的地毯铺在你的桌面上，位于图标之上、所有窗口之下；窗帘则从菜单栏垂挂下来。">
+<meta property="og:image" content="https://rlods.github.io/tapis/assets/icon.png">
+<meta property="og:url" content="https://rlods.github.io/tapis/zh-hans/">
+<meta property="og:locale" content="zh_CN">
+<style>
+  :root {
+    --bg: #f6f0e6;
+    --surface: #fffaf2;
+    --ink: #2a211c;
+    --muted: #6d6058;
+    --line: #e4d8c6;
+    --accent: #a8322a;
+    --accent-ink: #fff8f0;
+    --indigo: #283a6b;
+    --floor-a: #e8d3ad;
+    --floor-b: #dcc49a;
+    --shadow: 0 18px 40px -18px rgba(60, 35, 20, .45);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b1714;
+      --surface: #241f1b;
+      --ink: #f1e8dc;
+      --muted: #b3a597;
+      --line: #3a322b;
+      --accent: #d0574b;
+      --accent-ink: #1b1714;
+      --indigo: #9fb2e6;
+      --floor-a: #3a2e22;
+      --floor-b: #33281e;
+      --shadow: 0 18px 40px -18px rgba(0, 0, 0, .8);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  .hero-grid > *, .features > *, .gallery > * { min-width: 0; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: ui-serif, "New York", Georgia, serif; line-height: 1.15; font-weight: 600; }
+  /* Serif faces have no Arabic or CJK: those pages keep the system font throughout. */
+  :lang(ar) :is(h1, h2, h3, .brand span), :lang(ja) :is(h1, h2, h3), :lang(zh) :is(h1, h2, h3),
+  :lang(ko) :is(h1, h2, h3) { font-family: inherit; }
+  :lang(ar) h1, :lang(ar) h2, :lang(ar) h3 { line-height: 1.4; }
+  /* CJK titles: smaller, and broken between phrases rather than mid-word where the browser can. */
+  :lang(ja) h1, :lang(zh) h1, :lang(ko) h1 { font-size: clamp(32px, 4.6vw, 46px); line-height: 1.3; }
+  :lang(ja), :lang(zh) { word-break: auto-phrase; }
+  :lang(ko) { word-break: keep-all; }
+  h2 { font-size: clamp(28px, 4vw, 38px); margin: 0 0 12px; }
+  h3 { font-size: 20px; margin: 0 0 6px; }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--muted); }
+
+  /* Language menu */
+  .topbar { display: flex; justify-content: flex-end; padding-top: 16px; }
+  .langs { position: relative; font-size: 14px; }
+  .langs summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+  }
+  .langs summary::-webkit-details-marker { display: none; }
+  .langs summary svg { width: 15px; height: 15px; }
+  .langs ul {
+    position: absolute; inset-inline-end: 0; top: calc(100% + 6px); z-index: 2; margin: 0; padding: 6px;
+    list-style: none; min-width: 190px; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; box-shadow: var(--shadow);
+  }
+  .langs a { display: block; padding: 6px 10px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+  .langs a:hover, .langs a:focus-visible { background: var(--bg); }
+  .langs a[aria-current] { color: var(--accent); font-weight: 600; }
+  footer .langlist { flex-basis: 100%; }
+  .langs a, footer .langlist a { unicode-bidi: isolate; }   /* each name in its own direction */
+  footer .langlist a { color: var(--muted); text-decoration: none; }
+  footer .langlist a[aria-current] { color: var(--ink); }
+
+  /* Hero */
+  header.hero { padding: 0 0 40px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: center; padding-top: 32px; }
+  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .brand img { width: 64px; height: 64px; }
+  .brand span { font-family: ui-serif, "New York", Georgia, serif; font-size: 28px; font-weight: 600; }
+  h1 { font-size: clamp(38px, 6vw, 60px); margin: 0 0 18px; letter-spacing: -.01em; }
+  .lede { font-size: 20px; color: var(--muted); max-width: 32em; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 28px; }
+  .button {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: var(--accent-ink);
+    padding: 14px 24px; border-radius: 12px; text-decoration: none; font-weight: 600;
+    box-shadow: var(--shadow);
+  }
+  .button:hover { filter: brightness(1.06); }
+  .button svg { width: 18px; height: 18px; }
+  .req { font-size: 14px; color: var(--muted); }
+
+  /* The rug on the floor, with a folded corner */
+  .floor {
+    position: relative; aspect-ratio: 16 / 11; border-radius: 18px; padding: 9%;
+    background: repeating-linear-gradient(90deg, var(--floor-a) 0 46px, var(--floor-b) 46px 48px);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .rug {
+    position: relative; width: 100%; aspect-ratio: 16 / 10; transform: rotate(-4deg);
+    filter: drop-shadow(0 14px 18px rgba(50, 25, 10, .35));
+  }
+  .rug img {
+    display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 3px;
+    clip-path: polygon(0 0, 100% 0, 100% 64%, 76% 100%, 0 100%);
+  }
+  .rug .flap {
+    position: absolute; right: 0; bottom: 0; width: 24%; height: 36%;
+    background: linear-gradient(135deg, #8e7a6c 0%, #b4a293 55%, #cdbdaf 100%);
+    clip-path: polygon(0 100%, 100% 0, 0 0);
+    transform-origin: 50% 50%;
+  }
+
+  section { padding: 56px 0; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 28px; }
+  .feature p { color: var(--muted); margin: 0; }
+  .feature .glyph {
+    width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; font-size: 20px;
+  }
+  .extras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px;
+    margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .extras p { display: flex; gap: 12px; align-items: flex-start; margin: 0; color: var(--muted); font-size: 16px; }
+  .extras strong { color: var(--ink); }
+  .extras .glyph { flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--line); font-size: 16px; }
+  .feature .shot {
+    display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px;
+    box-shadow: var(--shadow); margin-bottom: 14px;
+  }
+
+  .steps { list-style: none; counter-reset: step; margin: 28px 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
+  .steps li { counter-increment: step; position: relative; padding-inline-start: 52px; min-width: 0; }
+  .steps li::before {
+    content: counter(step); position: absolute; inset-inline-start: 0; top: 0; width: 36px; height: 36px;
+    border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink);
+    font: 600 16px ui-serif, "New York", Georgia, serif;
+  }
+  .steps h3 { margin-top: 5px; }
+  .steps p { color: var(--muted); margin: 0 0 6px; }
+  .steps .how { font-size: 15px; color: var(--ink); margin: 0; }
+  kbd {
+    font: 600 13px -apple-system, BlinkMacSystemFont, sans-serif; padding: 1px 6px; border-radius: 5px;
+    background: var(--surface); border: 1px solid var(--line); border-bottom-width: 2px; white-space: nowrap;
+    unicode-bidi: isolate; direction: ltr;
+  }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+  .gallery figure { margin: 0; }
+  .gallery img {
+    width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-radius: 6px;
+    box-shadow: var(--shadow);
+  }
+  .gallery figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+
+
+  footer { padding: 32px 0 48px; font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  @media (max-width: 820px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; padding-top: 16px; }
+    .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  /* The film */
+  .player { position: relative; }
+  .film video {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+    border-radius: 16px; background: #141a2e; box-shadow: var(--shadow);
+  }
+  .player .play {
+    position: absolute; inset: 0; width: 100%; border: 0; border-radius: 16px; padding: 0;
+    background: rgba(20, 16, 12, .12); cursor: pointer; display: grid; place-items: center;
+  }
+  .player .play span {
+    width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow); transition: transform .15s;
+  }
+  .player .play:hover span, .player .play:focus-visible span { transform: scale(1.08); }
+  .player .play svg { width: 34px; height: 34px; margin-left: 6px; }
+  .player .play:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+  @media (max-width: 520px) {
+    .features, .gallery, .steps, .extras { grid-template-columns: minmax(0, 1fr); }
+    .floor { padding: 7%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap topbar">
+    <details class="langs">
+      <summary aria-label="语言"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M2.5 10h15M10 2.5c2.2 2.3 3.2 4.8 3.2 7.5s-1 5.2-3.2 7.5c-2.2-2.3-3.2-4.8-3.2-7.5s1-5.2 3.2-7.5z"/></svg><span>简体中文</span></summary>
+      <ul>
+        <li><a href="../" hreflang="en" lang="en">English</a></li>
+        <li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="../es/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="../nl/" hreflang="nl" lang="nl">Nederlands</a></li>
+        <li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="../it/" hreflang="it" lang="it">Italiano</a></li>
+        <li><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+        <li><a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans" aria-current="page">简体中文</a></li>
+        <li><a href="../ko/" hreflang="ko" lang="ko">한국어</a></li>
+        <li><a href="../ar/" hreflang="ar" lang="ar">العربية</a></li>
+        <li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li>
+      </ul>
+    </details>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="brand"><img src="../assets/icon.png" alt=""><span>Tapis</span></div>
+      <h1>为你的 Mac 桌面铺上真实的地毯，挂上真实的窗帘。</h1>
+      <p class="lede">Tapis 在你的桌面上铺一张柔软的布料模拟地毯，位于图标之上、所有窗口之下。抓住一角就能把它折起来，也可以把它卷起来，或者把东西扫到它下面。你还可以从菜单栏挂下窗帘，拉过整个桌面。</p>
+      <div class="cta">
+        <a class="button" id="download" href="https://github.com/rlods/tapis/releases/latest">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 2h2v9.2l3.3-3.3 1.4 1.4L10 15 4.3 9.3l1.4-1.4L9 11.2V2zM3 16h14v2H3z"/></svg>
+          <span>下载 Mac 版</span>
+        </a>
+        <span class="req">免费 · macOS 14 或更高版本 · Apple 芯片</span>
+      </div>
+    </div>
+    <div class="floor" aria-hidden="true">
+      <div class="rug"><img src="../assets/persian.jpg" alt=""><div class="flap"></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="film">
+    <div class="wrap">
+      <h2>现在你看得见，现在你看不见。</h2>
+      <p class="muted">一分钟真实布料效果演示：窗帘拉开，杂乱消失，杰作登场，窗帘落下，好戏收场。</p>
+      <div class="player">
+        <video controls playsinline preload="none" poster="../assets/film-poster.jpg" width="1920" height="1080">
+          <source src="../assets/film.webm" type='video/webm; codecs="av01.0.08M.10"'>
+          <source src="../assets/film.mp4" type="video/mp4">
+        </video>
+        <button class="play" type="button" aria-label="播放影片">
+          <span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5 3l12 7-12 7z"/></svg></span>
+        </button>
+      </div>
+      <script>
+        (() => {
+          const player = document.currentScript.previousElementSibling;
+          const video = player.querySelector('video'), play = player.querySelector('.play');
+          video.controls = false;   // the big button until it starts; the usual controls after
+          const start = () => { play.remove(); video.controls = true; };
+          play.addEventListener('click', () => { start(); video.play(); });
+          video.addEventListener('play', start, { once: true });
+        })();
+      </script>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>就像真正的织物</h2>
+      <p class="muted">它的动作就像一张厚重的羊毛地毯。掀起一角，它会软软地落回原处；折起来，它就保持折叠。</p>
+      <div class="features">
+        <div class="feature"><img class="shot" src="../assets/shot-fold.jpg" alt="一张基里姆地毯，一角被折了过来" loading="lazy"><h3>折叠和卷起</h3><p>抓住任意位置并拖移，即可掀起、折叠或卷起地毯。把折痕拖回去即可撤销，或者连按将整张地毯抚平。</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-under.jpg" alt="地毯一角被掀起，露出下面的桌面图标" loading="lazy"><h3>覆盖在图标上</h3><p>每个桌面图标都会在地毯下顶起一个小鼓包。图标堆得越多，鼓包就越大。</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-designs.jpg" alt="八张不同图案的地毯，其中一张印着猫咪图片" loading="lazy"><h3>自己动手设计</h3><p>波斯、赫里兹、基里姆、柏柏尔、条纹、镶边或长绒图案任你挑选，颜色、流苏、磨损和绒毛长度也都由你决定。</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-stack.jpg" alt="三张地毯叠放在一起" loading="lazy"><h3>叠放多张地毯</h3><p>地毯可以相互叠放，你移动的那张会滑到最上面。</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-curtains.jpg" alt="一幅条纹窗帘和一幅蓝色窗帘挂在菜单栏下，轻轻摆动" loading="lazy"><h3>还有窗帘</h3><p>从菜单栏挂下窗帘。沿着菜单栏滑动它们，拉开或合上，轻轻一甩，它们又会垂回原来的褶皱。丝绒、亚麻、条纹、镶边，或者用你自己的图片。</p></div>
+        <div class="feature"><img class="shot" src="../assets/shot-arrangements.jpg" alt="三个桌面：工作、周末和电影之夜" loading="lazy"><h3>多种布置</h3><p>为每种心情准备一套地毯或窗帘，一套用于工作，一套用于周末，在菜单栏中点按一下即可切换。</p></div>
+      </div>
+      <div class="extras">
+        <p><span class="glyph" aria-hidden="true">🔈</span><span><strong>织物声音。</strong>移动时会发出柔和低沉的羊毛摩擦声，折痕落下时会有轻轻的一声闷响。点按一下即可关闭。</span></p>
+        <p><span class="glyph" aria-hidden="true">🍃</span><span><strong>对 Mac 很轻量。</strong>静止的地毯几乎不占用 CPU。即使整天待在桌面上，也不会让风扇狂转，不会消耗电池。</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="wrap">
+      <h2>支持 Tapis</h2>
+      <p class="muted">Tapis 是免费的。如果它让你的桌面变得温馨了一点，你可以<a href="https://ko-fi.com/rlods">在 Ko-fi 上请我喝杯咖啡</a>，或<a href="https://github.com/sponsors/rlods">在 GitHub 上赞助</a>。</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>使用方法</h2>
+      <p class="muted">一切操作都只需用鼠标在地毯上完成，或通过菜单栏中的 Tapis 图标。</p>
+      <ol class="steps">
+        <li><h3>折叠</h3><p>抓住地毯的任意位置并拖移，即可掀起、折叠或卷起它。折痕会停留在你放下的位置。</p><p class="how">把折痕拖回去即可撤销。<strong>连按</strong>可将整张地毯抚平。</p></li>
+        <li><h3>按住以编辑</h3><p>在地毯上<strong>按住</strong>半秒：地毯即被选中，编辑时不会被折起。</p><p class="how">拖移可移动地毯，拖移一角可调整大小，拖移顶部的旋钮可旋转（按住 <kbd>⇧</kbd> 键以 15° 为单位对齐）。完成后再次点按地毯，或点按其他任意位置。</p></li>
+        <li><h3>打造专属于你的地毯</h3><p>选中的地毯下方会出现一个小工具栏。点按<strong>设计</strong>可调整图案、颜色、流苏、磨损和绒毛长度。</p><p class="how">工具栏还可以将地毯旋转 90°、抚平或移除。</p></li>
+        <li><h3>滑到图标下方</h3><p>默认情况下，地毯铺在桌面图标上方，图标会在地毯下顶起鼓包。地毯也可以铺在图标<strong>下方</strong>，就像垫在文件下的一块垫子。</p><p class="how">在工具栏中选择<strong>放在图标下方</strong>。要再次操作这张地毯，请在菜单中选取<strong>重新摆放地毯</strong>。</p></li>
+        <li><h3>添加更多地毯</h3><p>在菜单中选取<strong>添加地毯</strong>（<kbd>⌘N</kbd>）。地毯会相互叠放，你移动的那张会滑到最上面。</p><p class="how">取消勾选<strong>显示地毯</strong>，可暂时让桌面恢复整洁。</p></li>
+        <li><h3>挂上窗帘</h3><p>在菜单中选取<strong>窗帘</strong>：一幅窗帘便会从菜单栏垂挂下来。横向拖移可让它沿菜单栏滑动，拖向另一幅窗帘则会把那幅推开。</p><p class="how">按住 <kbd>⌘</kbd> 连按可拉开或合上窗帘，连按则可将其抚平。按住窗帘后，可拖移两侧的控制柄调整大小。<strong>添加窗帘</strong>可再挂一幅。</p></li>
+        <li><h3>切换布置</h3><p>一个布置就是一套地毯或一套窗帘。一套用于工作，一套用于周末，在菜单中点按一下即可切换。</p><p class="how"><strong>管理布置…</strong>可用于创建、复制、重新命名和删除布置。所有更改都会自动存储。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>挑选图案</h2>
+      <p class="muted">每种图案都由 App 实时绘制，配色随你喜欢。</p>
+      <div class="gallery">
+        <figure><img src="../assets/persian.jpg" alt="" loading="lazy"><figcaption>波斯</figcaption></figure>
+        <figure><img src="../assets/heriz.jpg" alt="" loading="lazy"><figcaption>赫里兹</figcaption></figure>
+        <figure><img src="../assets/kilim.jpg" alt="" loading="lazy"><figcaption>基里姆</figcaption></figure>
+        <figure><img src="../assets/beniOurain.jpg" alt="" loading="lazy"><figcaption>柏柏尔</figcaption></figure>
+        <figure><img src="../assets/stripes.jpg" alt="" loading="lazy"><figcaption>条纹</figcaption></figure>
+        <figure><img src="../assets/bordered.jpg" alt="" loading="lazy"><figcaption>镶边</figcaption></figure>
+        <figure><img src="../assets/shag.jpg" alt="" loading="lazy"><figcaption>长绒</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2>安装</h2>
+      <p class="muted">免费。需要配备 Apple 芯片的 Mac，以及 macOS 14 或更高版本。</p>
+      <ol class="steps">
+        <li><h3>下载</h3><p>从<a href="https://github.com/rlods/tapis/releases/latest">发布</a>页面获取最新的 DMG。</p></li>
+        <li><h3>拖到“应用程序”文件夹</h3><p>打开 DMG，将 <strong>Tapis</strong> 拖到<strong>“应用程序”</strong>文件夹中。</p></li>
+        <li><h3>启动</h3><p>从“应用程序”文件夹中打开 Tapis，它的图标会出现在菜单栏中。</p></li>
+        <li><h3>保持最新</h3><p>有新版本时，Tapis 会通知你并提供更新。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <h2>隐私从设计之初就已考虑</h2>
+      <p class="muted">无需帐户，没有数据分析。唯一的网络请求是检查更新，而且不会发送任何关于你的信息。是否更新始终由你决定。Tapis 完全在你的 Mac 上运行，你的地毯和窗帘永远不会离开它。</p>
+      <div class="features">
+        <div class="feature"><div class="glyph">🏠</div><h3>存储在你的 Mac 上</h3><p>你的地毯、窗帘、设计和布置只保存在你的 Mac 上，不会同步，也不会上传。</p></div>
+        <div class="feature"><div class="glyph">🗂</div><h3>你的桌面始终属于你</h3><p>Tapis 会向访达询问图标的位置，只为让地毯覆盖在图标上。这些信息永远不会离开你的 Mac。</p></div>
+        <div class="feature"><div class="glyph">🔄</div><h3>只为检查更新</h3><p>为了确认是否有新版本，Tapis 会读取 GitHub 上的一份公开列表。它不会发送任何关于你或你的 Mac 的信息。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="credits">
+    <div class="wrap">
+      <h2>灵感来源</h2>
+      <p class="muted">Tapis 的灵感来自 <a href="https://x.com/terkelg/status/2107541877176094880">Terkel 的一条推文</a>。这个点子非常有趣，而把它做出来的过程也同样有趣。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Romain Lods · <a href="https://x.com/rolographic">@rolographic</a></span>
+    <span><a href="#install">安装</a> · <a href="https://github.com/rlods/tapis/releases">所有版本</a> · <a href="#privacy">隐私</a> · <a href="#support">支持</a></span>
+    <nav class="langlist" aria-label="语言"><a href="../" hreflang="en" lang="en">English</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans" aria-current="page">简体中文</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a> · <a href="../ar/" hreflang="ar" lang="ar">العربية</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></nav>
+  </div>
+</footer>
+
+<script data-goatcounter="https://rlods.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
